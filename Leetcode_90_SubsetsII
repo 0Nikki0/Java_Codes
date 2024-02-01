@@ -1,0 +1,31 @@
+public static void main(String[] args) {
+		int[] nums= {1,2,2};
+		List<Integer>list= new ArrayList<>();
+		List<List<Integer>>l1= new ArrayList<List<Integer>>();
+		
+		Arrays.sort(nums);
+		
+		fun(nums, list, l1, 0);
+		
+		System.out.println(l1);
+	}
+	
+	private static void fun(int[] nums, List<Integer> list, List<List<Integer>> l1, int cp) {
+			
+		
+		l1.add(new ArrayList<Integer>(list));
+		
+		for(int i=cp; i< nums.length; i++){
+			
+			if(i!=cp && nums[i]==nums[i-1])
+				continue;
+			
+			list.add(nums[i]);
+			
+			fun(nums, list, l1, i+1);
+			
+			list.remove(list.size()-1);
+		}
+		
+		
+	}
